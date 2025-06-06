@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="{{ url_for('login') }}" method="post">
+        <div class="container">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <button type="submit">Login</button>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn" onclick="window.location.href='{{ url_for('register') }}'">Register</button>
+            <span class="psw">Forgot <a href="{{ url_for('forgot_password') }}">password?</a></span>
+        </div>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

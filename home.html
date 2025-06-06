@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h2>Welcome, {{ session['username'] }}!</h2>
+    <form action="{{ url_for('prediction') }}" method="get">
+        <button type="submit">Start Prediction</button>
+    </form>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
